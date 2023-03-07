@@ -8,6 +8,7 @@ public class Test{
         dev1.setSleep(4.0) ;
         dev1.setSalary(100000);
         dev1.addLanguage("Java");
+        dev1.addLanguage("c#");
         
 
         Project project1 = new Project();
@@ -26,10 +27,17 @@ public class Test{
 
         // dev2.displayStatus();
 
+
+        System.out.println("test: "+ Developer.getDevCount());
+        System.out.println("total salary: " + Developer.getTotalSalary());
+
+
+
         ArrayList<String> dev1Languages = dev1.getLanguages();
-        System.out.println(dev1Languages);
+        dev1Languages.add("test");
+        System.out.println("we should see the test in the list" + dev1Languages);
+
+        System.out.println("Should not see test in this array");
         dev1.displayStatus();
-
-
     }
 }

@@ -2,7 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 public class Developer{
     //------------------ attributes (private/protected) ----------------------
-    
+    private static int devCount = 0;
+    private static int totalSalary = 0;
     private ArrayList<String> languages;
     private String name;
     private double sleep;
@@ -14,6 +15,7 @@ public class Developer{
     public Developer() {
         this.languages = new ArrayList<String>();
         this.projects = new ArrayList<Project>();
+        Developer.devCount++;
     };
 
     public Developer(String name, double sleep, int salary) {
@@ -22,6 +24,8 @@ public class Developer{
         this.salary = salary;
         this.languages = new ArrayList<String>();
         this.projects = new ArrayList<Project>();
+        Developer.devCount++;
+        Developer.totalSalary += salary;
     }
 
 
@@ -49,6 +53,14 @@ public class Developer{
 
 
     //------------------ getters / setters  ----------------------
+    public static int getDevCount(){
+        return Developer.devCount;
+    }
+
+    public static int getTotalSalary(){
+        return Developer.totalSalary;
+    }
+
     public String getName(){
         return this.name;
     }
@@ -71,11 +83,21 @@ public class Developer{
     }
 
     public void setSalary(int salary){
+        Developer.totalSalary += salary;
         this.salary = salary;
     }
 
     public ArrayList<String> getLanguages(){
-        return this.languages;
+        ArrayList<String> output = new ArrayList<String>();
+
+        Object languagesCloneObject = this.languages.clone();
+        String[] languagesCloneArray = languagesCloneObject.toString().replace("[", "").replace( "]", "").replace(",", "").split(" ");
+
+        for(String language : languagesCloneArray){
+            output.add(language);
+        }
+
+        return output;
     }
 
     public void setLanguages(ArrayList<String> languages){
