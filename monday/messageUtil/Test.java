@@ -30,7 +30,7 @@ public class Test {
 
 
         // ----------------Type Casting---------------------
-        int days = 7;
+        Double days = 7;
         double costOfLiving = 7.59;
 
         double weeklyTotalCostOfLiving = days * costOfLiving;
